@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../../context/AuthContext';
 import { usePortfolio } from '../../../context/PortfolioContext';
-import { SuccessToast, useToast } from '../AdminComponents';
+import { SectionHeader, SuccessToast, useToast } from '../AdminComponents';
 
 const ResumeEditor = () => {
   const { portfolio, fetchPortfolio } = usePortfolio();
