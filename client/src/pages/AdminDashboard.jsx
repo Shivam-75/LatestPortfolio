@@ -69,7 +69,7 @@ const DashboardHome = ({ portfolio }) => {
             </div>
             <div className="flex flex-col sm:flex-row sm:justify-between gap-1.5 py-1 last:border-0">
               <span className="text-gray-500">Login URL:</span>
-              <span className="text-blue-400 break-all">/admin</span>
+              <span className="text-blue-400 break-all">/shivam/admin</span>
             </div>
           </div>
         </div>
@@ -121,7 +121,7 @@ const AdminDashboard = () => {
   }, []);
 
   useEffect(() => {
-    if (!checking && !isLoggedIn) navigate('/admin');
+    if (!checking && !isLoggedIn) navigate('/shivam/admin');
   }, [checking, isLoggedIn]);
 
   if (checking || loading) {
@@ -198,7 +198,7 @@ const AdminDashboard = () => {
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg>
               Portfolio
             </a>
-            <button onClick={() => { logout(); navigate('/admin'); }} className="flex-1 flex items-center justify-center gap-2 py-2 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 hover:bg-red-500/20 text-xs transition-all cursor-pointer">
+            <button onClick={() => { logout(); navigate('/shivam/admin'); }} className="flex-1 flex items-center justify-center gap-2 py-2 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 hover:bg-red-500/20 text-xs transition-all cursor-pointer">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" y1="12" x2="9" y2="12" /></svg>
               Logout
             </button>

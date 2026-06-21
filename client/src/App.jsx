@@ -12,8 +12,8 @@ function App() {
       <AuthProvider>
         <PortfolioProvider>
           <Routes>
-            <Route path="/admin" element={<AdminLogin />} />
-            <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            <Route path="/shivam/admin" element={<AdminLogin />} />
+            <Route path="/shivam/admin/dashboard" element={<AdminDashboard />} />
             <Route path="/project/:id" element={<ProjectDetailPage />} />
             <Route path="/*" element={<PortfolioSite />} />
           </Routes>

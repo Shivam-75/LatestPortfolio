@@ -22,7 +22,7 @@ const AdminLogin = () => {
   }, []);
 
   useEffect(() => {
-    if (isLoggedIn) navigate('/admin/dashboard');
+    if (isLoggedIn) navigate('/shivam/admin/dashboard');
   }, [isLoggedIn]);
 
   const handleSubmit = async (e) => {
@@ -32,7 +32,7 @@ const AdminLogin = () => {
     try {
       const result = await login(email, password);
       if (result.success) {
-        navigate('/admin/dashboard');
+        navigate('/shivam/admin/dashboard');
       } else {
         setError(result.message || 'Invalid credentials. Please try again.');
       }
