@@ -58,7 +58,6 @@ export const seedAdmin = async () => {
         console.log("✅ Portfolio data re-seeded with missing defaults.");
       }
     }
-
   } catch (err) {
     console.error("Seed error:", err.message);
   }
@@ -96,7 +95,7 @@ export const login = async (req, res) => {
       httpOnly: true,
       secure: true,
       sameSite: "none",
-      maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
     return res.json({ success: true, token, message: "Login successful." });
@@ -110,7 +109,7 @@ export const logout = (req, res) => {
   res.clearCookie("shivamtoken", {
     httpOnly: true,
     secure: true,
-    sameSite: "none"
+    sameSite: "none",
   });
   return res.json({ success: true, message: "Logged out successfully." });
 };
