@@ -16,11 +16,22 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 app.disable("etag");
 
+const ALLOWED_ORIGINS = [
+  "https://shivamportfolio-blush.vercel.app",
+  "http://localhost:5173",
+  "http://localhost:3000"
+];
+
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Dynamically allow the request origin to support credentials (cookies)
-      callback(null, origin || true);
+      if (!origin) return callback(null, true);
+      const isAllowed = ALLOWED_ORIGINS.includes(origin) || origin.endsWith(".vercel.app");
+      if (isAllowed) {
+        return callback(null, origin);
+      } else {
+        return callback(new Error("Not allowed by CORS"));
+      }
     },
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
