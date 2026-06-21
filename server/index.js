@@ -47,7 +47,11 @@ app.get("/", (req, res) => {
 
 Db().then(async () => {
   await seedAdmin();
-  app.listen(PORT, () =>
-    console.log(`🚀 Server running at http://localhost:${PORT}`),
-  );
+  if (!process.env.VERCEL) {
+    app.listen(PORT, () =>
+      console.log(`🚀 Server running at http://localhost:${PORT}`),
+    );
+  }
 });
+
+export default app;

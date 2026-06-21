@@ -59,16 +59,6 @@ export const seedAdmin = async () => {
       }
     }
 
-    // Seed admin if it doesn't exist to match dashboard credentials
-    const adminDoc = await Admin.findOne({ email: "admin@shivam.dev" });
-    if (!adminDoc) {
-      const hashedPassword = await bcrypt.hash("Shivam@Admin2026", 10);
-      await Admin.create({
-        email: "admin@shivam.dev",
-        password: hashedPassword
-      });
-      console.log("✅ Admin admin@shivam.dev seeded.");
-    }
   } catch (err) {
     console.error("Seed error:", err.message);
   }
