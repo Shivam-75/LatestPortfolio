@@ -129,13 +129,6 @@ const Projects = () => {
                   <div className="absolute inset-0 bg-[#070b14]/50 backdrop-blur-[0.5px] transition-all duration-300 group-hover:bg-[#070b14]/30" />
                 )}
 
-                {/* Icon */}
-                <div
-                  className="w-12 h-12 rounded-xl bg-white/[0.08] backdrop-blur-sm border border-white/[0.1] flex items-center justify-center transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 relative z-10"
-                  style={{ color: project.accent }}>
-                  {project.icon}
-                </div>
-
                 {/* Category badge */}
                 <span className="absolute top-3 right-3 px-2.5 py-0.5 rounded-full bg-black/40 backdrop-blur-sm text-white text-[10px] font-medium border border-white/[0.08] z-10">
                   {project.category}
