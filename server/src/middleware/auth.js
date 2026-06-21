@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 
 const auth = (req, res, next) => {
   try {
-    let token = req.cookies?.admin_token;
+    let token = req.cookies?.shivamtoken;
 
     // Fallback to Authorization header if cookie is missing
     if (!token) {

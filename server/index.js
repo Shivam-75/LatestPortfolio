@@ -42,7 +42,7 @@ app.use("/api/portfolio", portfolioRoutes);
 app.use("/api/messages", messageRoutes);
 
 app.get("/", (req, res) => {
-  res.send("🚀 Shivam Portfolio API is running!");
+  return res.send("🚀 Shivam Portfolio API is running!");
 });
 
 Db().then(async () => {

@@ -44,9 +44,9 @@ const getPortfolio = async () => {
 export const getPortfolioData = async (req, res) => {
   try {
     const portfolio = await getPortfolio();
-    res.json({ success: true, data: portfolio });
+    return res.json({ success: true, data: portfolio });
   } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
+    return res.status(500).json({ success: false, message: err.message });
   }
 };
 
@@ -57,9 +57,9 @@ export const updateHero = async (req, res) => {
     Object.assign(portfolio.hero, req.body);
     portfolio.markModified("hero");
     await portfolio.save();
-    res.json({ success: true, data: portfolio.hero, message: "Hero updated." });
+    return res.json({ success: true, data: portfolio.hero, message: "Hero updated." });
   } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
+    return res.status(500).json({ success: false, message: err.message });
   }
 };
 
@@ -70,16 +70,16 @@ export const updateAbout = async (req, res) => {
     Object.assign(portfolio.about, req.body);
     portfolio.markModified("about");
     await portfolio.save();
-    res.json({ success: true, data: portfolio.about, message: "About updated." });
+    return res.json({ success: true, data: portfolio.about, message: "About updated." });
   } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
+    return res.status(500).json({ success: false, message: err.message });
   }
 };
 
 // ─── Projects CRUD ────────────────────────────────────────────────────────────
 export const getProjects = async (req, res) => {
   const portfolio = await getPortfolio();
-  res.json({ success: true, data: portfolio.projects });
+  return res.json({ success: true, data: portfolio.projects });
 };
 
 export const addProject = async (req, res) => {
@@ -87,9 +87,9 @@ export const addProject = async (req, res) => {
     const portfolio = await getPortfolio();
     portfolio.projects.push(req.body);
     await portfolio.save();
-    res.json({ success: true, data: portfolio.projects, message: "Project added." });
+    return res.json({ success: true, data: portfolio.projects, message: "Project added." });
   } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
+    return res.status(500).json({ success: false, message: err.message });
   }
 };
 
@@ -100,9 +100,9 @@ export const updateProject = async (req, res) => {
     if (!project) return res.status(404).json({ success: false, message: "Project not found." });
     Object.assign(project, req.body);
     await portfolio.save();
-    res.json({ success: true, data: portfolio.projects, message: "Project updated." });
+    return res.json({ success: true, data: portfolio.projects, message: "Project updated." });
   } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
+    return res.status(500).json({ success: false, message: err.message });
   }
 };
 
@@ -111,9 +111,9 @@ export const deleteProject = async (req, res) => {
     const portfolio = await getPortfolio();
     portfolio.projects = portfolio.projects.filter(p => p._id.toString() !== req.params.id);
     await portfolio.save();
-    res.json({ success: true, message: "Project deleted." });
+    return res.json({ success: true, message: "Project deleted." });
   } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
+    return res.status(500).json({ success: false, message: err.message });
   }
 };
 
@@ -123,9 +123,9 @@ export const addEducation = async (req, res) => {
     const portfolio = await getPortfolio();
     portfolio.education.push(req.body);
     await portfolio.save();
-    res.json({ success: true, data: portfolio.education, message: "Education added." });
+    return res.json({ success: true, data: portfolio.education, message: "Education added." });
   } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
+    return res.status(500).json({ success: false, message: err.message });
   }
 };
 
@@ -136,9 +136,9 @@ export const updateEducation = async (req, res) => {
     if (!edu) return res.status(404).json({ success: false, message: "Education not found." });
     Object.assign(edu, req.body);
     await portfolio.save();
-    res.json({ success: true, data: portfolio.education, message: "Education updated." });
+    return res.json({ success: true, data: portfolio.education, message: "Education updated." });
   } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
+    return res.status(500).json({ success: false, message: err.message });
   }
 };
 
@@ -147,9 +147,9 @@ export const deleteEducation = async (req, res) => {
     const portfolio = await getPortfolio();
     portfolio.education = portfolio.education.filter(e => e._id.toString() !== req.params.id);
     await portfolio.save();
-    res.json({ success: true, message: "Education deleted." });
+    return res.json({ success: true, message: "Education deleted." });
   } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
+    return res.status(500).json({ success: false, message: err.message });
   }
 };
 
@@ -160,9 +160,9 @@ export const updateCertifications = async (req, res) => {
     portfolio.certifications = req.body;
     portfolio.markModified("certifications");
     await portfolio.save();
-    res.json({ success: true, data: portfolio.certifications, message: "Certifications updated." });
+    return res.json({ success: true, data: portfolio.certifications, message: "Certifications updated." });
   } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
+    return res.status(500).json({ success: false, message: err.message });
   }
 };
 
@@ -173,9 +173,9 @@ export const updateServices = async (req, res) => {
     portfolio.services = req.body;
     portfolio.markModified("services");
     await portfolio.save();
-    res.json({ success: true, message: "Services updated." });
+    return res.json({ success: true, message: "Services updated." });
   } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
+    return res.status(500).json({ success: false, message: err.message });
   }
 };
 
@@ -186,9 +186,9 @@ export const updateContact = async (req, res) => {
     Object.assign(portfolio.contact, req.body);
     portfolio.markModified("contact");
     await portfolio.save();
-    res.json({ success: true, data: portfolio.contact, message: "Contact updated." });
+    return res.json({ success: true, data: portfolio.contact, message: "Contact updated." });
   } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
+    return res.status(500).json({ success: false, message: err.message });
   }
 };
 
@@ -199,9 +199,9 @@ export const updateNavbar = async (req, res) => {
     Object.assign(portfolio.navbar, req.body);
     portfolio.markModified("navbar");
     await portfolio.save();
-    res.json({ success: true, data: portfolio.navbar, message: "Navbar updated." });
+    return res.json({ success: true, data: portfolio.navbar, message: "Navbar updated." });
   } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
+    return res.status(500).json({ success: false, message: err.message });
   }
 };
 
@@ -213,9 +213,9 @@ export const updateResume = async (req, res) => {
     portfolio.resume.lastUpdated = new Date();
     portfolio.markModified("resume");
     await portfolio.save();
-    res.json({ success: true, data: portfolio.resume, message: "Resume updated." });
+    return res.json({ success: true, data: portfolio.resume, message: "Resume updated." });
   } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
+    return res.status(500).json({ success: false, message: err.message });
   }
 };
 
@@ -288,7 +288,7 @@ export const uploadFile = async (req, res) => {
       await portfolio.save();
     }
 
-    res.json({ success: true, url: fileUrl, message: "File uploaded to Cloudonix successfully." });
+    return res.json({ success: true, url: fileUrl, message: "File uploaded to Cloudonix successfully." });
   } catch (err) {
     // Delete local temporary file if error occurs
     if (localFilePath && fs.existsSync(localFilePath)) {
@@ -298,7 +298,7 @@ export const uploadFile = async (req, res) => {
         console.error("Cleanup error in catch block:", cleanupErr.message);
       }
     }
-    res.status(500).json({ success: false, message: err.message });
+    return res.status(500).json({ success: false, message: err.message });
   }
 };
 
@@ -309,8 +309,8 @@ export const updateCodingStats = async (req, res) => {
     portfolio.codingStats = req.body;
     portfolio.markModified("codingStats");
     await portfolio.save();
-    res.json({ success: true, message: "Coding stats updated." });
+    return res.json({ success: true, message: "Coding stats updated." });
   } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
+    return res.status(500).json({ success: false, message: err.message });
   }
 };

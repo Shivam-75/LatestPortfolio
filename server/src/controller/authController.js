@@ -58,6 +58,17 @@ export const seedAdmin = async () => {
         console.log("✅ Portfolio data re-seeded with missing defaults.");
       }
     }
+
+    // Seed admin if it doesn't exist to match dashboard credentials
+    const adminDoc = await Admin.findOne({ email: "admin@shivam.dev" });
+    if (!adminDoc) {
+      const hashedPassword = await bcrypt.hash("Shivam@Admin2026", 10);
+      await Admin.create({
+        email: "admin@shivam.dev",
+        password: hashedPassword
+      });
+      console.log("✅ Admin admin@shivam.dev seeded.");
+    }
   } catch (err) {
     console.error("Seed error:", err.message);
   }
@@ -91,30 +102,30 @@ export const login = async (req, res) => {
       { expiresIn: "7d" },
     );
 
-    res.cookie("admin_token", token, {
+    res.cookie("shivamtoken", token, {
       httpOnly: true,
       secure: true,
       sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     });
 
-    res.json({ success: true, token, message: "Login successful." });
+    return res.json({ success: true, token, message: "Login successful." });
   } catch (err) {
-    res.status(500).json({ success: false, message: err.message });
+    return res.status(500).json({ success: false, message: err.message });
   }
 };
 
 // ─── Logout ──────────────────────────────────────────────────────────────────
 export const logout = (req, res) => {
-  res.clearCookie("admin_token", {
+  res.clearCookie("shivamtoken", {
     httpOnly: true,
     secure: true,
     sameSite: "none"
   });
-  res.json({ success: true, message: "Logged out successfully." });
+  return res.json({ success: true, message: "Logged out successfully." });
 };
 
 // ─── Verify Token ─────────────────────────────────────────────────────────────
 export const verifyToken = (req, res) => {
-  res.json({ success: true, admin: req.admin });
+  return res.json({ success: true, admin: req.admin });
 };
