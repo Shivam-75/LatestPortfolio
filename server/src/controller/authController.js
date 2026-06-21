@@ -117,5 +117,24 @@ export const logout = (req, res) => {
 
 // ─── Verify Token ─────────────────────────────────────────────────────────────
 export const verifyToken = (req, res) => {
-  return res.json({ success: true, admin: req.admin });
+  try {
+    let token = req.cookies?.shivamtoken;
+
+    // Fallback to Authorization header if cookie is missing
+    if (!token) {
+      const authHeader = req.headers.authorization;
+      if (authHeader && authHeader.startsWith("Bearer ")) {
+        token = authHeader.split(" ")[1];
+      }
+    }
+
+    if (!token) {
+      return res.json({ success: false, message: "No token provided." });
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    return res.json({ success: true, admin: decoded });
+  } catch (err) {
+    return res.json({ success: false, message: "Invalid or expired token." });
+  }
 };
