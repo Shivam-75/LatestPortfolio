@@ -1,4 +1,8 @@
 import "dotenv/config";
+import dns from "dns";
+
+// Solve Vercel DNS resolution timeout for MongoDB Atlas SRV records
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
 import express from "express";
 import compression from "compression";
 import cookieParser from "cookie-parser";
@@ -17,16 +21,18 @@ const app = express();
 app.disable("etag");
 
 const ALLOWED_ORIGINS = [
+  "https://shivam-three.vercel.app/",
   "https://shivamportfolio-blush.vercel.app",
   "http://localhost:5173",
-  "http://localhost:3000"
+  "http://localhost:3000",
 ];
 
 app.use(
   cors({
     origin: (origin, callback) => {
       if (!origin) return callback(null, true);
-      const isAllowed = ALLOWED_ORIGINS.includes(origin) || origin.endsWith(".vercel.app");
+      const isAllowed =
+        ALLOWED_ORIGINS.includes(origin) || origin.endsWith(".vercel.app");
       if (isAllowed) {
         return callback(null, origin);
       } else {
