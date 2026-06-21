@@ -124,10 +124,7 @@ const Projects = () => {
                   />
                 )}
 
-                {/* Dark overlay for cover image readability */}
-                {project.coverImage && (
-                  <div className="absolute inset-0 bg-[#070b14]/50 backdrop-blur-[0.5px] transition-all duration-300 group-hover:bg-[#070b14]/30" />
-                )}
+
 
                 {/* Category badge */}
                 <span className="absolute top-3 right-3 px-2.5 py-0.5 rounded-full bg-black/40 backdrop-blur-sm text-white text-[10px] font-medium border border-white/[0.08] z-10">
