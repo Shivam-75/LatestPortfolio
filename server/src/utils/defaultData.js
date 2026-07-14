@@ -76,6 +76,7 @@ export const getDefaultPortfolioData = () => ({
     { title: "SaveLife & MediaAssist AI", description: "End-to-end blood bank management system with AI-powered donor-recipient matching via Gemini API, reducing manual matching time by 70%.", tags: ["MERN Stack", "JWT", "Gemini API", "REST API", "MongoDB"], category: "Full Stack", color: "from-rose-500/20 to-red-500/20", accent: "#FB7185", github: "https://github.com/Shivam-75", live: "#", period: "Nov – Dec 2025" },
     { title: "npm i cloudonix", description: "Published open-source Node.js SDK abstracting cloud media upload and URL generation APIs. Earned NPM Verified Contributor badge.", tags: ["Node.js", "Cloud SDK", "REST API Wrapper", "Open Source", "NPM"], category: "Backend", color: "from-orange-500/20 to-yellow-500/20", accent: "#FB923C", github: "https://github.com/Shivam-75", live: "https://www.npmjs.com/package/cloudonix", period: "May – Jun 2026" },
     { title: "npx crt-server", description: "Authored and maintain a Node.js CLI package with 1,400+ weekly active users; auto-scaffolds production-ready backend architecture.", tags: ["Node.js", "CLI Tool", "Open Source", "NPM", "Author & Maintainer"], category: "Backend", color: "from-sky-500/20 to-indigo-500/20", accent: "#38BDF8", github: "https://github.com/Shivam-75", live: "https://www.npmjs.com/package/crt-server", period: "Nov – Dec 2025" },
+    { title: "Android App – Portfolio", description: "A native Android mobile application built with React Native showcasing portfolio projects, skills, and contact information with smooth navigation and animations.", tags: ["React Native", "Android", "JavaScript", "Expo", "Navigation"], category: "Android", color: "from-green-500/20 to-emerald-500/20", accent: "#4ADE80", github: "https://github.com/Shivam-75", live: "#", period: "Jun – Jul 2026" },
   ],
   education: [
     { degree: "Bachelor of Computer Applications (BCA)", field: "Computer Science", institution: "Institute of Technology and Management, Gorakhpur", period: "Aug 2023 – Jun 2026", status: "Completed", grade: "7.0/10 CGPA", color: "from-blue-500 to-cyan-400", bgColor: "from-blue-500/10 to-cyan-500/10", icon: "🎓", highlights: ["Data Structures & Algorithms", "Web Development", "Database Management Systems", "Object-Oriented Programming", "Computer Networks"] },
@@ -94,10 +95,60 @@ export const getDefaultPortfolioData = () => ({
     { number: "2", label: "NPM Packages" },
   ],
   services: [
-    { title: "Web Development", description: "Building modern, responsive, and high-performance web applications using cutting-edge technologies like React, Next.js, and Node.js.", features: ["Single Page Apps", "Progressive Web Apps", "Server-Side Rendering", "API Development"], color: "from-blue-500 to-cyan-400", bgColor: "from-blue-500/10 to-cyan-500/10", borderHover: "hover:border-blue-500/30" },
-    { title: "Backend Solutions", description: "Developing robust, scalable server-side solutions with secure authentication, database management, and cloud deployment.", features: ["REST APIs", "Database Design", "JWT Authentication", "AWS Cloud Deploy"], color: "from-emerald-500 to-teal-400", bgColor: "from-emerald-500/10 to-teal-500/10", borderHover: "hover:border-emerald-500/30" },
-    { title: "Open Source & NPM", description: "Creating and maintaining production-quality open-source npm packages with active community adoption and documentation.", features: ["NPM Package Development", "CLI Tools", "SDK Development", "Community Support"], color: "from-purple-500 to-pink-400", bgColor: "from-purple-500/10 to-pink-500/10", borderHover: "hover:border-purple-500/30" },
-    { title: "Cloud & DevOps", description: "Deploying and managing applications on AWS with load balancing, auto-scaling, and containerization using Docker.", features: ["AWS EC2 & ELB", "Auto Scaling Groups", "Docker Containers", "CI/CD Pipeline"], color: "from-orange-500 to-yellow-400", bgColor: "from-orange-500/10 to-yellow-500/10", borderHover: "hover:border-orange-500/30" },
+    {
+      title: "Mobile App Development",
+      description: "I develop fast, scalable, and feature-rich mobile applications using Flutter and React Native. From UI design to backend integration, I build apps that provide a smooth and modern user experience.",
+      features: ["Flutter", "React Native", "UI Design", "App Store / Play Store"],
+      icon: "mobile",
+      color: "from-red-500 to-rose-400",
+      bgColor: "from-red-500/10 to-rose-500/10",
+      borderHover: "hover:border-red-500/30"
+    },
+    {
+      title: "Web Development",
+      description: "Creating responsive, modern, and user-focused websites using HTML, CSS, JavaScript, React.js, Node.js, and MongoDB. I build everything from business websites to powerful full-stack applications.",
+      features: ["React.js", "Next.js", "Full Stack", "Responsive Design"],
+      icon: "web",
+      color: "from-blue-500 to-cyan-400",
+      bgColor: "from-blue-500/10 to-cyan-500/10",
+      borderHover: "hover:border-blue-500/30"
+    },
+    {
+      title: "UI / UX Design",
+      description: "Designing simple, clean, and user-friendly interfaces using Figma. I focus on user experience, clarity, and elegant layouts that enhance product usability.",
+      features: ["Figma", "UI / UX", "Wireframing", "Prototyping"],
+      icon: "design",
+      color: "from-pink-500 to-rose-400",
+      bgColor: "from-pink-500/10 to-rose-500/10",
+      borderHover: "hover:border-pink-500/30"
+    },
+    {
+      title: "Backend Development & API Integration",
+      description: "Building secure and scalable backend systems with Express.js and Node.js. I handle REST APIs, authentication, database management, and third-party integrations.",
+      features: ["Node.js", "Express.js", "REST APIs", "JWT Auth"],
+      icon: "backend",
+      color: "from-emerald-500 to-teal-400",
+      bgColor: "from-emerald-500/10 to-teal-500/10",
+      borderHover: "hover:border-emerald-500/30"
+    },
+    {
+      title: "Website Performance & SEO Optimization",
+      description: "Improving website speed, SEO score, loading time, and overall performance. I optimize images, scripts, and structure for a lightning-fast user experience.",
+      features: ["SEO Score", "PageSpeed", "Image Optimization", "Clean Code"],
+      icon: "seo",
+      color: "from-orange-500 to-yellow-400",
+      bgColor: "from-orange-500/10 to-yellow-500/10",
+      borderHover: "hover:border-orange-500/30"
+    },
+    {
+      title: "Maintenance & Support",
+      description: "Providing ongoing support, updates, improvements, bug fixes, and long-term maintenance to ensure your website or app runs smoothly with zero downtime.",
+      features: ["Bug Fixes", "Updates", "Security Patches", "Zero Downtime"],
+      icon: "maintenance",
+      color: "from-purple-500 to-indigo-400",
+      bgColor: "from-purple-500/10 to-indigo-500/10",
+      borderHover: "hover:border-purple-500/30"
+    }
   ],
   contact: {
     email: "shivam6386000621@gmail.com",

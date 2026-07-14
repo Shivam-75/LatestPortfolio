@@ -31,8 +31,9 @@ export const seedAdmin = async () => {
         portfolioDoc.codingStats = defaults.codingStats;
         updated = true;
       }
-      if (!portfolioDoc.services?.length) {
+      if (!portfolioDoc.services?.length || portfolioDoc.services.length !== 6) {
         portfolioDoc.services = defaults.services;
+        portfolioDoc.markModified("services");
         updated = true;
       }
       if (!portfolioDoc.about?.bio) {

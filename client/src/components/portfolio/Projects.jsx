@@ -8,7 +8,7 @@ const Projects = () => {
   const navigate = useNavigate();
   const { portfolio } = usePortfolio();
 
-  const filters = ["All", "Full Stack", "Frontend", "Backend"];
+  const filters = ["All", "Full Stack", "Frontend", "Backend", "Android"];
 
   // Default icon for projects from DB (no icon stored)
   const defaultIcon = (

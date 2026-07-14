@@ -5,10 +5,7 @@ const Db = async () => {
     return mongoose.connection;
   }
   try {
-    const conn = await mongoose.connect(process.env.MONGO_DB_URL, {
-      serverSelectionTimeoutMS: 10000,
-      socketTimeoutMS: 45000,
-    });
+    const conn = await mongoose.connect(process.env.MONGO_DB_URL);
     console.log("📡 Database Connected:", conn.connection.host);
     return conn;
   } catch (err) {

@@ -141,3 +141,14 @@ html {
   background: rgba(59, 130, 246, 0.3);
   color: white;
 }
+
+/* Autofill styling overrides to keep input fields dark and text white/gray */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #0a0f1d inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: white !important;
+}

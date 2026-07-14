@@ -54,7 +54,7 @@ const AdminLogin = () => {
         <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
       </div>
 
-      <div className="relative z-10 w-full max-w-md">
+      <div className="relative z-10 w-full max-w-md animate-fade-in-up">
         {/* Logo */}
         <div className="text-center mb-10">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 mb-5 shadow-[0_0_40px_rgba(59,130,246,0.15)]">
@@ -68,7 +68,7 @@ const AdminLogin = () => {
         </div>
 
         {/* Card */}
-        <div className="relative p-8 rounded-3xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.08] backdrop-blur-xl shadow-[0_25px_60px_rgba(0,0,0,0.5)]">
+        <div className="relative p-8 rounded-3xl bg-[#0a0f1d]/85 border border-white/[0.08] backdrop-blur-xl shadow-[0_25px_60px_rgba(0,0,0,0.6)]">
           {/* Top gradient line */}
           <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent rounded-full" />
 

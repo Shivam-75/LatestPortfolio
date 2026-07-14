@@ -374,8 +374,27 @@ const ProjectForm = ({ project, onSave, onCancel, loading }) => {
     screenshots: (project.screenshots || []).map((s) =>
       typeof s === "string" ? { url: s, caption: "" } : s,
     ),
+    // Store tags as raw text for free editing
+    _tagsRaw: project.tags?.join(", ") || "",
   });
   const set = (f, v) => setForm((p) => ({ ...p, [f]: v }));
+
+  const handleTagsChange = (val) => {
+    // Store raw input as-is so commas can be typed freely
+    set("_tagsRaw", val);
+    // Parse tags by comma, trim whitespace, keep non-empty ones
+    const parsed = val.split(",").map((t) => t.trim()).filter(Boolean);
+    set("tags", parsed);
+  };
+
+  const handleSaveForm = () => {
+    // Final parse before save — strip trailing empty
+    const finalTags = (form._tagsRaw || "")
+      .split(",")
+      .map((t) => t.trim())
+      .filter(Boolean);
+    onSave({ ...form, tags: finalTags });
+  };
 
   return (
     <div className="p-5 rounded-2xl bg-white/[0.03] border border-blue-500/20 space-y-4">
@@ -385,12 +404,19 @@ const ProjectForm = ({ project, onSave, onCancel, loading }) => {
           value={form.title}
           onChange={(v) => set("title", v)}
         />
-        <AdminInput
-          label="Category"
-          value={form.category}
-          onChange={(v) => set("category", v)}
-          placeholder="Full Stack / Frontend / Backend"
-        />
+        <div className="flex flex-col">
+          <label className="block text-gray-600 dark:text-gray-400 text-xs font-semibold uppercase tracking-widest mb-1.5">Category</label>
+          <select
+            value={form.category}
+            onChange={(e) => set("category", e.target.value)}
+            className="w-full px-4 py-2.5 rounded-xl bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.08] text-gray-900 dark:text-white text-sm focus:outline-none focus:border-blue-500/50 focus:bg-blue-500/[0.03] transition-all duration-300"
+          >
+            <option value="Full Stack" className="bg-[#070b14] text-white">Full Stack</option>
+            <option value="Frontend" className="bg-[#070b14] text-white">Frontend</option>
+            <option value="Backend" className="bg-[#070b14] text-white">Backend</option>
+            <option value="Android" className="bg-[#070b14] text-white">Android</option>
+          </select>
+        </div>
         <AdminInput
           label="Period"
           value={form.period}
@@ -463,18 +489,10 @@ const ProjectForm = ({ project, onSave, onCancel, loading }) => {
 
       <AdminTextarea
         label="Tags (comma separated)"
-        value={form.tags?.join(", ") || ""}
-        onChange={(v) =>
-          set(
-            "tags",
-            v
-              .split(",")
-              .map((t) => t.trim())
-              .filter(Boolean),
-          )
-        }
+        value={form._tagsRaw ?? ""}
+        onChange={handleTagsChange}
         rows={2}
-        placeholder="React.js, Node.js, MongoDB, JWT"
+        placeholder="React.js, Node.js, MongoDB, JWT, Android Studio"
       />
 
       <div className="flex gap-3 justify-end">
@@ -484,7 +502,7 @@ const ProjectForm = ({ project, onSave, onCancel, loading }) => {
           Cancel
         </button>
         <SaveButton
-          onClick={() => onSave(form)}
+          onClick={handleSaveForm}
           loading={loading}
           label="Save Project"
         />

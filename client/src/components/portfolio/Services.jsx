@@ -1,10 +1,68 @@
 import { usePortfolio } from '../../context/PortfolioContext';
 
+const mobileIcon = (
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+    <line x1="12" y1="18" x2="12.01" y2="18" />
+  </svg>
+);
+
+const webIcon = (
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10" />
+    <line x1="2" y1="12" x2="22" y2="12" />
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+  </svg>
+);
+
+const designIcon = (
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    {/* Figma style layout logo */}
+    <path d="M9 10.5a2.25 2.25 0 1 1 0-4.5h3v4.5H9z" />
+    <path d="M9 15a2.25 2.25 0 1 1 0-4.5h3V15H9z" />
+    <path d="M9 19.5A2.25 2.25 0 0 1 9 15h3v2.25a2.25 2.25 0 0 1-2.25 2.25z" />
+    <path d="M15 10.5a2.25 2.25 0 1 0 0-4.5h-3v4.5h3z" />
+    <path d="M15 15a2.25 2.25 0 1 1-2.25-2.25H15V15z" />
+  </svg>
+);
+
+const backendIcon = (
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="16 18 22 12 16 6" />
+    <polyline points="8 6 2 12 8 18" />
+  </svg>
+);
+
+const seoIcon = (
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10" />
+    <path d="M12 6a6 6 0 0 1 6 6" />
+    <line x1="12" y1="12" x2="16" y2="8" />
+  </svg>
+);
+
+const maintenanceIcon = (
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94.77z" />
+    <path d="M21 21l-6-6" />
+    <path d="M3 3h4v4H3z" />
+  </svg>
+);
+
 const defaultIcon = (
   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" />
   </svg>
 );
+
+const iconMap = {
+  mobile: mobileIcon,
+  web: webIcon,
+  design: designIcon,
+  backend: backendIcon,
+  seo: seoIcon,
+  maintenance: maintenanceIcon
+};
 
 const Services = () => {
   const { portfolio } = usePortfolio();
@@ -20,7 +78,7 @@ const Services = () => {
   const services = portfolio?.services?.length
     ? portfolio.services.map((s, i) => ({
         ...s,
-        icon: defaultIcon,
+        icon: iconMap[s.icon] || defaultIcon,
         color: s.color || colorPalettes[i % colorPalettes.length].color,
         bgColor: s.bgColor || colorPalettes[i % colorPalettes.length].bgColor,
         borderHover: s.borderHover || colorPalettes[i % colorPalettes.length].borderHover,

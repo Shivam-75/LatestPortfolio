@@ -59,6 +59,7 @@ const serviceSchema = new mongoose.Schema({
   title: { type: String, default: "" },
   description: { type: String, default: "" },
   features: [{ type: String }],
+  icon: { type: String, default: "" },
   color: { type: String, default: "from-blue-500 to-cyan-400" },
   bgColor: { type: String, default: "from-blue-500/10 to-cyan-500/10" },
   borderHover: { type: String, default: "hover:border-blue-500/30" },

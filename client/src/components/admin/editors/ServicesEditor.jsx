@@ -41,9 +41,10 @@ const ServicesEditor = () => {
               <h3 className="text-gray-900 dark:text-white font-semibold text-sm">Service {i + 1}</h3>
               <button onClick={() => setServices(services.filter((_, idx) => idx !== i))} className="w-7 h-7 rounded-lg bg-red-500/10 text-red-400 flex items-center justify-center hover:bg-red-500/20 transition-all cursor-pointer text-sm">×</button>
             </div>
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid sm:grid-cols-3 gap-4">
               <AdminInput label="Title" value={service.title} onChange={(v) => updateService(i, 'title', v)} />
               <AdminInput label="Gradient Color" value={service.color} onChange={(v) => updateService(i, 'color', v)} placeholder="from-blue-500 to-cyan-400" />
+              <AdminInput label="Icon Name" value={service.icon} onChange={(v) => updateService(i, 'icon', v)} placeholder="mobile / web / design / backend / seo / maintenance" />
             </div>
             <AdminTextarea label="Description" value={service.description} onChange={(v) => updateService(i, 'description', v)} rows={2} />
             <AdminTextarea
